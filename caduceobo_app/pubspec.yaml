@@ -32,6 +32,7 @@ dependencies:
   webview_flutter: ^4.4.0
   geolocator: ^9.0.0
   image_picker: ^1.0.0
+  flutter_launcher_icons: ^0.14.4
 
 
 dev_dependencies:
@@ -86,3 +87,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_icons:
+  android: true
+  ios: true
+  web: true
+  desktop: true
+  image_path: "assets/caduceo_icon.png"
