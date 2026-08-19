@@ -90,6 +90,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  web: true
-  desktop: true
   image_path: "assets/caduceo_icon.png"
