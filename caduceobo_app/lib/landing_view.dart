@@ -8,8 +8,26 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  int _selectedTabIndex = 0; 
+  int _selectedTabIndex = 0;
   bool _isMenuOpen = false;
+  final PageController _carouselController = PageController();
+  int _currentCarouselPage = 0;
+
+  final List<Map<String, dynamic>> _carouselItems = [
+    {
+      'icon': Icons.calendar_today_outlined,
+      'text': 'Haga citas de manera mas eficiente',
+    },
+    {'icon': Icons.access_time_rounded, 'text': 'Reduzca cancelación de citas'},
+    {
+      'icon': Icons.article_outlined,
+      'text': 'Dar a los pacientes acceso a los resultados',
+    },
+    {
+      'icon': Icons.phone_android_rounded,
+      'text': 'Organice y administre su consultorio desde su smartphone',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +68,11 @@ class _LandingPageState extends State<LandingPage> {
             onTap: () {},
             child: const Text(
               'INICIAR SESIÓN',
-              style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
@@ -78,18 +100,30 @@ class _LandingPageState extends State<LandingPage> {
                 children: const [
                   Text(
                     'Caduceo',
-                    style: TextStyle(color: Color(0xFF1E293B), fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      color: Color(0xFF1E293B),
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     'MI RECORRIDO EN SALUD',
-                    style: TextStyle(color: Colors.grey, fontSize: 8, letterSpacing: 0.5),
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 8,
+                      letterSpacing: 0.5,
+                    ),
                   ),
                 ],
               ),
             ],
           ),
           IconButton(
-            icon: Icon(_isMenuOpen ? Icons.close : Icons.menu, color: Colors.grey[700], size: 28),
+            icon: Icon(
+              _isMenuOpen ? Icons.close : Icons.menu,
+              color: Colors.grey[700],
+              size: 28,
+            ),
             onPressed: () => setState(() => _isMenuOpen = !_isMenuOpen),
           ),
         ],
@@ -105,8 +139,8 @@ class _LandingPageState extends State<LandingPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const ListTile(leading: Icon(Icons.home, color: Color(0xFF00A3E0)),),
-          const ListTile(leading: Icon(Icons.search, color: Colors.grey),),
+          const ListTile(leading: Icon(Icons.home, color: Color(0xFF00A3E0))),
+          const ListTile(leading: Icon(Icons.search, color: Colors.grey)),
           const SizedBox(height: 8),
           OutlinedButton(
             onPressed: () {},
@@ -114,7 +148,10 @@ class _LandingPageState extends State<LandingPage> {
               side: const BorderSide(color: Colors.orange),
               minimumSize: const Size(double.infinity, 45),
             ),
-            child: const Text('¿ES USTED UN PROFESIONAL?', style: TextStyle(color: Colors.orange)),
+            child: const Text(
+              '¿ES USTED UN PROFESIONAL?',
+              style: TextStyle(color: Colors.orange),
+            ),
           ),
         ],
       ),
@@ -135,7 +172,9 @@ class _LandingPageState extends State<LandingPage> {
           padding: const EdgeInsets.all(16.0),
           child: Card(
             elevation: 4,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4),
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -148,7 +187,9 @@ class _LandingPageState extends State<LandingPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: _selectedTabIndex == 0 ? _buildCitasForm() : _buildResultadosForm(),
+                  child: _selectedTabIndex == 0
+                      ? _buildCitasForm()
+                      : _buildResultadosForm(),
                 ),
               ],
             ),
@@ -207,7 +248,10 @@ class _LandingPageState extends State<LandingPage> {
                 decoration: InputDecoration(
                   hintText: '¿Dónde?',
                   border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 10,
+                  ),
                 ),
               ),
             ),
@@ -216,7 +260,7 @@ class _LandingPageState extends State<LandingPage> {
               width: 48,
               color: const Color(0xFF4DD0E1),
               child: const Icon(Icons.location_on, color: Colors.white),
-            )
+            ),
           ],
         ),
         const SizedBox(height: 12),
@@ -226,11 +270,16 @@ class _LandingPageState extends State<LandingPage> {
           child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFE67E22),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
             onPressed: () {},
             icon: const Icon(Icons.search, color: Colors.white),
-            label: const Text('Buscar', style: TextStyle(color: Colors.white, fontSize: 16)),
+            label: const Text(
+              'Buscar',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -238,9 +287,12 @@ class _LandingPageState extends State<LandingPage> {
           onPressed: () {},
           child: const Text(
             'Centros de Radiología',
-            style: TextStyle(color: Color(0xFF00A3E0), decoration: TextDecoration.underline),
+            style: TextStyle(
+              color: Color(0xFF00A3E0),
+              decoration: TextDecoration.underline,
+            ),
           ),
-        )
+        ),
       ],
     );
   }
@@ -255,7 +307,10 @@ class _LandingPageState extends State<LandingPage> {
             decoration: InputDecoration(
               hintText: 'Clave Secreta Resultante (RSK)',
               border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
             ),
           ),
         ),
@@ -267,7 +322,10 @@ class _LandingPageState extends State<LandingPage> {
               hintText: 'Fecha de nacimiento',
               suffixIcon: Icon(Icons.cake, color: Colors.grey),
               border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 10,
+              ),
             ),
           ),
         ),
@@ -278,63 +336,96 @@ class _LandingPageState extends State<LandingPage> {
           child: ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFE67E22),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
             onPressed: () {},
             icon: const Icon(Icons.search, color: Colors.white),
-            label: const Text('Buscar', style: TextStyle(color: Colors.white, fontSize: 16)),
+            label: const Text(
+              'Buscar',
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           ),
         ),
       ],
     );
   }
 
-  // 4. Sección de Carrusel / Indicadores
   Widget _buildFeatureCarousel() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 24.0),
-      child: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(color: const Color(0xFF4DD0E1)),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(Icons.calendar_today, color: Color(0xFF4DD0E1), size: 32),
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 24.0),
+    child: Column(
+      children: [
+        SizedBox(
+          height: 130,
+          child: PageView.builder(
+            controller: _carouselController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentCarouselPage = index;
+              });
+            },
+            itemCount: _carouselItems.length,
+            itemBuilder: (context, index) {
+              final item = _carouselItems[index];
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFF4DD0E1), width: 1.5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(
+                      item['icon'] as IconData,
+                      color: const Color(0xFF4DD0E1),
+                      size: 32,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Text(
+                      item['text'] as String,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Color(0xFF4A4A4A),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
-          const SizedBox(height: 12),
-          const Text(
-            'Haga citas de manera mas eficiente',
-            style: TextStyle(fontSize: 14, color: Color(0xFF4A4A4A)),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+            _carouselItems.length,
+            (index) => _buildDot(isActive: index == _currentCarouselPage),
           ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildDot(isActive: true),
-              _buildDot(isActive: false),
-              _buildDot(isActive: false),
-              _buildDot(isActive: false),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
-  Widget _buildDot({required bool isActive}) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 3),
-      width: 8,
-      height: 8,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isActive ? const Color(0xFF007AFF) : Colors.grey.shade300,
-      ),
-    );
-  }
-
+Widget _buildDot({required bool isActive}) {
+  return AnimatedContainer(
+    duration: const Duration(milliseconds: 200),
+    margin: const EdgeInsets.symmetric(horizontal: 3),
+    width: 8,
+    height: 8,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: isActive ? const Color(0xFF007AFF) : Colors.grey.shade300,
+    ),
+  );
+}
   // 5. Pie de página
   Widget _buildFooter() {
     return Container(
@@ -344,16 +435,32 @@ class _LandingPageState extends State<LandingPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('SOPORTE', style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold)),
+          const Text(
+            'SOPORTE',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const Divider(color: Colors.grey),
           _buildFooterLink('Acerca de nosotros'),
           _buildFooterLink('Contáctenos'),
           const SizedBox(height: 20),
-          const Text('INFORMACIÓN DE CONTACTO', style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.bold)),
+          const Text(
+            'INFORMACIÓN DE CONTACTO',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const Divider(color: Colors.grey),
           const SizedBox(height: 8),
-          const Text('Av. America E-0435\nEdif. Jaque, Planta Baja, Local 3\nCochabamba - Bolivia\nTel: +591 (4)4796096\nEmail: info@caduceo.bo',
-              style: TextStyle(color: Colors.grey, height: 1.5, fontSize: 13)),
+          const Text(
+            'Av. America E-0435\nEdif. Jaque, Planta Baja, Local 3\nCochabamba - Bolivia\nTel: +591 (4)4796096\nEmail: info@caduceo.bo',
+            style: TextStyle(color: Colors.grey, height: 1.5, fontSize: 13),
+          ),
           const SizedBox(height: 24),
           const Divider(color: Colors.grey),
           const Center(
@@ -374,7 +481,10 @@ class _LandingPageState extends State<LandingPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: const TextStyle(color: Colors.white, fontSize: 13)),
+          Text(
+            title,
+            style: const TextStyle(color: Colors.white, fontSize: 13),
+          ),
           const Icon(Icons.chevron_right, color: Colors.grey, size: 18),
         ],
       ),
