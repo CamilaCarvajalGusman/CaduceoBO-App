@@ -66,5 +66,23 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+  <string>Necesitamos acceso a la red local</string>
+  
+  <key>NSBonjourServiceTypes</key>
+  <array>
+    <string>_http._tcp</string>
+    <string>_https._tcp</string>
+  </array>
+  
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>fb</string>
+    <string>fbapi</string>
+    <string>fbauth2</string>
+    <string>fbshare</string>
+    <string>http</string>
+    <string>https</string>
+  </array>
 </dict>
 </plist>
